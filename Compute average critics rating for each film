@@ -3,6 +3,7 @@ from numpy import mean
 
 avg = dict()
 for line in open_file:
+    if line.startswith('Movie'): continue
     line = line.rstrip()
     pieces = line.split(',')
     movie_name = pieces[0:1]
