@@ -16,27 +16,27 @@ for line in open_file:
     for number_1 in numbers[0:1]:
         try:
             critic_1.append(int(number_1))
-        except: continue
+        except: critic_1.append(0)
 
     for number_2 in numbers[1:2]:
         try:
             critic_2.append(int(number_2))
-        except: continue
+        except: critic_2.append(0)
 
     for number_3 in numbers[2:3]:
         try:
             critic_3.append(int(number_3))
-        except: continue
+        except: critic_3.append(0)
 
     for number_4 in numbers[3:4]:
         try:
             critic_4.append(int(number_4))
-        except: continue
+        except: critic_4.append(0)
 
     for number_5 in numbers[4:5]:
         try:
             critic_5.append(int(number_5))
-        except: continue
+        except: critic_5.append(0)
 
     for number_au in numbers[5:]:
             audience.append(float(number_au))
