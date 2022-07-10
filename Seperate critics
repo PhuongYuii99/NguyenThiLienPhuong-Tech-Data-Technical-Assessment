@@ -1,0 +1,96 @@
+open_file = open('C:/Users/admin/Documents/MCU_rating_movies.csv')
+import numpy as np
+import matplotlib.pyplot as plt
+
+critic_1 = list()
+critic_2 = list()
+critic_3 = list()
+critic_4 = list()
+critic_5 = list()
+audience = list()
+
+for line in open_file:
+    if line.startswith('Movie'): continue
+    line = line.rstrip()
+    numbers = line.split(',')[2:]
+    
+    for number_1 in numbers[0:1]:
+        try:
+            critic_1.append(int(number_1))
+        except: critic_1.append(0)
+
+    for number_2 in numbers[1:2]:
+        try:
+            critic_2.append(int(number_2))
+        except: critic_2.append(0)
+
+    for number_3 in numbers[2:3]:
+        try:
+            critic_3.append(int(number_3))
+        except: critic_3.append(0)
+
+    for number_4 in numbers[3:4]:
+        try:
+            critic_4.append(int(number_4))
+        except: critic_4.append(0)
+
+    for number_5 in numbers[4:5]:
+        try:
+            critic_5.append(int(number_5))
+        except: critic_5.append(0)
+
+    for number_au in numbers[5:]:
+            audience.append(float(number_au))
+
+#Calculate correlation between Critics and Audience rating
+critic_1_array = np.array(critic_1)
+audience_array = np.array(audience)
+cor_1 = np.corrcoef(critic_1_array, audience_array)[0,1]
+print('cor_1:',cor_1)
+
+critic_2_array = np.array(critic_2)
+cor_2 = np.corrcoef(critic_2_array, audience_array)[0,1]
+print('cor_2:',cor_2)
+
+critic_3_array = np.array(critic_3)
+cor_3 = np.corrcoef(critic_3_array, audience_array)[0,1]
+print('cor_3:',cor_3)
+
+critic_4_array = np.array(critic_4)
+cor_4 = np.corrcoef(critic_4_array, audience_array)[0,1]
+print('cor_4:',cor_4)
+
+critic_5_array = np.array(critic_5)
+cor_5 = np.corrcoef(critic_5_array, audience_array)[0,1]
+print('cor_5:',cor_5)
+
+#Show chart Scatter Plot
+plt.scatter(critic_1, audience)
+plt.title("Correlation between Critic 1 and Audience rating")
+plt.xlabel("critic 1")
+plt.ylabel("audience rating")
+plt.show()
+
+plt.scatter(critic_2, audience)
+plt.title("Correlation between Critic 2 and Audience rating")
+plt.xlabel("critic 2")
+plt.ylabel("audience rating")
+plt.show()
+
+plt.scatter(critic_3, audience)
+plt.title("Correlation between Critic 3 and Audience rating")
+plt.xlabel("critic 3")
+plt.ylabel("audience rating")
+plt.show()
+
+plt.scatter(critic_4, audience)
+plt.title("Correlation between Critic 4 and Audience rating")
+plt.xlabel("critic 4")
+plt.ylabel("audience rating")
+plt.show()
+
+plt.scatter(critic_5, audience)
+plt.title("Correlation between Critic 5 and Audience rating")
+plt.xlabel("critic 5")
+plt.ylabel("audience rating")
+plt.show()
