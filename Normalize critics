@@ -1,0 +1,83 @@
+open_file = open('C:/Users/admin/Documents/MCU_rating_movies.csv')
+import numpy as np
+
+critic_1 = list()
+critic_2 = list()
+critic_3 = list()
+critic_4 = list()
+critic_5 = list()
+audience = list()
+
+for line in open_file:
+    if line.startswith('Movie'): continue
+    line = line.rstrip()
+    numbers = line.split(',')[2:]
+    
+    for number_1 in numbers[0:1]:
+        try:
+            critic_1.append(int(number_1))
+        except: continue
+
+    for number_2 in numbers[1:2]:
+        try:
+            critic_2.append(int(number_2))
+        except: continue
+
+    for number_3 in numbers[2:3]:
+        try:
+            critic_3.append(int(number_3))
+        except: continue
+
+    for number_4 in numbers[3:4]:
+        try:
+            critic_4.append(int(number_4))
+        except: continue
+
+    for number_5 in numbers[4:5]:
+        try:
+            critic_5.append(int(number_5))
+        except: continue
+
+    for number_au in numbers[5:]:
+            audience.append(float(number_au))
+#Normalize the values for the critics and transform values to z-scores
+#Normalize critic 1
+mean_1 = np.average(critic_1)
+std_1 = np.std(critic_1)
+norm_1 = list()
+for x1 in critic_1:
+    x1 = (x1-mean_1)/std_1
+    norm_1.append(x1) 
+print('Norm_1:',norm_1)
+#Normalize critic 2
+mean_2 = np.average(critic_2)
+std_2 = np.std(critic_2)
+norm_2 = list()
+for x2 in critic_2:
+    x2 = (x2-mean_2)/std_2
+    norm_2.append(x2) 
+print('Norm_2:',norm_2)
+#Normalize critic 3
+mean_3 = np.average(critic_3)
+std_3 = np.std(critic_3)
+norm_3 = list()
+for x3 in critic_3:
+    x3 = (x3-mean_3)/std_3
+    norm_3.append(x3) 
+print('Norm_3:',norm_3)
+#Normalize critic 4
+mean_4 = np.average(critic_4)
+std_4 = np.std(critic_4)
+norm_4 = list()
+for x4 in critic_4:
+    x4 = (x4-mean_4)/std_4
+    norm_4.append(x4) 
+print('Norm_4:',norm_4)
+#Normalize critic 5
+mean_5 = np.average(critic_5)
+std_5 = np.std(critic_5)
+norm_5 = list()
+for x5 in critic_5:
+    x5 = (x5-mean_5)/std_5
+    norm_5.append(x5) 
+print('Norm_5:',norm_5)
